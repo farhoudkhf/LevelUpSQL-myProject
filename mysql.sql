@@ -12,6 +12,20 @@ day_name TEXT NOT NULL, day_activity TEXT);
 INSERT INTO MyCalendar(day_date, day_name, day_activity)
 VALUES(date('now','localtime'), 'Friday', 'TEST_02 using the local date');
 
+-- get table info
+PRAGMA table_info(emp2);
+
+ALTER TABLE emp2
+RENAME COLUMN emp_name to FirsName;
+
+ALTER TABLE emp2
+ADD LastName varchar(255);
+
+ALTER TABLE emp2
+ALTER COLUMN LastName TEXT NOT Null;
+
+ALTER TABLE emp2
+DROP COLUMN emp_Email;
 
 SELECT * FROM MyCalendar;
 
@@ -30,3 +44,4 @@ SELECT date('now','localtime');
 --     type ='table' AND 
 --     name NOT LIKE 'sqlite_%';
 
+SELECT * FROM emp;
