@@ -11,3 +11,13 @@ CREATE TABLE IF NOT EXISTS responses_from_customer(
     numberOfGuests INTEGER,
     FOREIGN KEY (customerID) REFERENCES Customers(CustomerID)
 );
+
+
+-- get table info
+PRAGMA table_info(AnniversaryAttendees);
+
+-- get list of the tables in the schema
+SELECT name FROM sqlite_schema
+WHERE TYPE = 'table';
+
+-- DROP TABLE IF EXISTS responses_from_customerTBD;

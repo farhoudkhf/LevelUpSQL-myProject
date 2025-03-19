@@ -39,8 +39,17 @@ SELECT exists(SELECT 1 FROM emp2 WHERE email = 'OzxbcwfEnuehjy@gmail.com') AS ro
 
 SELECT 
     CASE
-        WHEN EXISTS (SELECT 1 FROM emp2 WHERE email = 'Ozxbcwf.Enuehjy@gmail.com') 
+        WHEN EXISTS (SELECT 1 FROM emp2 WHERE email = 'Ozxbcwf..Enuehjy@gmail.com') 
         THEN 'Exist'
+        ELSE 'Does not'
+    END;
+
+
+SELECT 
+    CASE
+        WHEN (SELECT COUNT(email) FROM emp2 WHERE email = 'Ozxbcwf..Enuehjy@gmail.com')=0
+        THEN 
+            
         ELSE 'Does not'
     END;
 
@@ -50,12 +59,25 @@ VALUES(9112, "Ozxbcwf","Enuehjy","Ozxbcwf.Enuehjy@gmail.com");
 INSERT INTO emp2(empID, FirstName, LastName,  email) 
 VALUES(9113, "Kmadwbc","Jfqqbezpxc","Kmadwbc.Jfqqbezpxc@live.com");
 
-IF NOT EXISTS(Select email from emp2 where email="Ozxbcwf.Enuehjy@gmail.com")
+IF NOT EXISTS(SELECT email from emp2 where email="Ozxbcwf.Enuehjy@gmail.com")
+    BEGIN
+        INSERT INTO emp2(empID, FirstName, LastName,  email) 
+        VALUES(9112, "Ozxbcwf","Enuehjy","Ozxbcwf.Enuehjy@gmail.com")
+    END;
+
+SELECT EXISTS(SELECT email from emp2 where email="Ozxbcwf.Enuehjy@gmail.com")
+
+-- "if" didn't work
+IF (SELECT COUNT(email) from emp2 where email="Ozxbcwf.Enuehjy@gmail.com")=1
 BEGIN
-INSERT INTO emp2(empID, FirstName, LastName,  email) 
-VALUES(9112, "Ozxbcwf","Enuehjy","Ozxbcwf.Enuehjy@gmail.com")
+'exist'
 END;
 
+IF (SELECT COUNT(email) from emp2 where email="Ozxbcwf.Enuehjy@gmail.com")
+    BEGIN
+        INSERT INTO emp2(empID, FirstName, LastName,  email) 
+        VALUES(9112, "Ozxbcwf","Enuehjy","Ozxbcwf.Enuehjy@gmail.com")
+    END;
 
 SELECT name FROM sqlite_schema
 WHERE type='table';

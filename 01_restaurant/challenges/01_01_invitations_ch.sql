@@ -5,4 +5,8 @@
 
 SELECT FirstName AS Name, LastName AS Surname, Email 
 FROM customers
-ORDER BY LastName ASC;
+ORDER BY LastName, FirstName ASC;
+
+SELECT FirstName, LastName, Email 
+FROM Customers
+ORDER BY LastName;
