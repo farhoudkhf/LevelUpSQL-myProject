@@ -4,8 +4,13 @@
 -- be able to keep his Friday reservation. 
 -- Today is July 24, 2022.
 
+-- Schema Info
 SELECT name FROM sqlite_schema
 WHERE type='table';
+
+SELECT * FROM Reservations;
+
+
 
 SELECT * FROM Customers WHERE FirstName = 'Norby';
 
