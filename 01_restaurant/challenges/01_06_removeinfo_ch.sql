@@ -10,14 +10,14 @@ WHERE type='table';
 
 SELECT * FROM Reservations;
 
-
-
 SELECT * FROM Customers WHERE FirstName = 'Norby';
+
+SELECT * FROM Reservations
+WHERE Date IS NULL;
 
 SELECT * FROM Reservations
 JOIN Customers ON Customers.CustomerID = Reservations.CustomerID
 WHERE Reservations.CustomerID = 64;
-
 
 SELECT ReservationID, Date FROM Reservations
 JOIN Customers ON Customers.CustomerID = Reservations.CustomerID
