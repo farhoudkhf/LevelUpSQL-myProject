@@ -8,7 +8,9 @@
 SELECT name FROM sqlite_schema
 WHERE type='table';
 
+
 SELECT * FROM Reservations;
+
 
 SELECT * FROM Customers WHERE FirstName = 'Norby';
 
