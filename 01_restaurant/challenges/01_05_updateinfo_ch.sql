@@ -9,5 +9,11 @@ WHERE FirstName = 'Taylor'
 AND LastName = 'Jenkins' 
 AND Address = '27170 6th Ave.';
 
+UPDATE Customers
+SET Address = '74 Pine St.', City='New York', State='NY'
+WHERE CustomerID = 26;
+
 SELECT * FROM Customers
 WHERE Customers.FirstName = 'Taylor';
+
+ 

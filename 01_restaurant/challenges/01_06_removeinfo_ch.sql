@@ -8,6 +8,7 @@
 SELECT name FROM sqlite_schema
 WHERE type='table';
 
+-- SHOW COLUMNS FROM Reservations;
 
 SELECT * FROM Reservations;
 
