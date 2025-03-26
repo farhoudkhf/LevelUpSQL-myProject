@@ -31,3 +31,24 @@ UPDATE Reservations SET Date = Null WHERE ReservationID = 2000;
 
 -- DELETE FROM Reservations
 -- WHERE ReservationID = 2000;
+
+SELECT * FROM Reservations
+WHERE 
+    CustomerID = 
+    (SELECT CustomerID
+    FROM Customers
+    WHERE FirstName = 'Loretta'
+    AND LastName = 'Hundey'
+    AND Phone = '310-730-8619'
+    )
+AND 
+    Date LIKE '2024-05-15%';
+
+SELECT CustomerID
+FROM Customers
+WHERE FirstName = 'Loretta'
+AND LastName = 'Hundey' 
+AND Phone = '310-730-8619';
+
+SELECT * FROM Reservations
+WHERE CustomerID = 70;

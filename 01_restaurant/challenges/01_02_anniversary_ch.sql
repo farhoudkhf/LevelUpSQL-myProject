@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS responses_from_customer(
     FOREIGN KEY (customerID) REFERENCES Customers(CustomerID)
 );
 
-
 -- get table info
 PRAGMA table_info(AnniversaryAttendees);
 
