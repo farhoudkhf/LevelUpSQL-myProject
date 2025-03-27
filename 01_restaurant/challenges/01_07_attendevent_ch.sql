@@ -26,3 +26,16 @@ WHERE Email = 'atapley2j@kinetecoinc.com';
 
 DELETE FROM AnniversaryAttendees AS AA
 WHERE AA.CustomerID = 92 AND AA.PartySize = 3;
+
+SELECT * FROM Customers
+WHERE Email LIKE 'vmclarnon24%';
+
+INSERT INTO AnniversaryAttendees(CustomerID, PartySize)
+VALUES(
+    (SELECT CustomerID FROM Customers
+    WHERE Email LIKE 'vmclarnon24%'),
+    5
+);
+
+SELECT *
+FROM AnniversaryAttendees;

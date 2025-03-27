@@ -32,7 +32,7 @@ UPDATE Reservations SET Date = Null WHERE ReservationID = 2000;
 -- DELETE FROM Reservations
 -- WHERE ReservationID = 2000;
 
-SELECT * FROM Reservations
+SELECT * FROM Reservations -- chabge "SELECT *" to "DELETE"
 WHERE 
     CustomerID = 
     (SELECT CustomerID
@@ -42,7 +42,7 @@ WHERE
     AND Phone = '310-730-8619'
     )
 AND 
-    Date LIKE '2024-05-15%';
+    Date LIKE '2020%';
 
 SELECT CustomerID
 FROM Customers
