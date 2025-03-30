@@ -66,7 +66,7 @@ INSERT INTO
     )
 VALUES 
         (
-            (
+            (  -- or just 1001
                 SELECT 
                     OrderID
                 FROM 
@@ -121,6 +121,18 @@ VALUES
         )
 ;
 
+-- reversed 3 rows
+-- insert 3rows into ordersdishes
+INSERT INTO
+    OrdersDishes (
+        OrderID,
+        DishID
+    )
+VALUES 
+        (1001, (SELECT DishID FROM Dishes WHERE Name = 'House Salad')),
+        (1001, (SELECT DishID FROM Dishes WHERE Name = 'Classic Burger')),
+        (1001, (SELECT DishID FROM Dishes WHERE Name = 'Pomegranate Iced Tea'));
+
 DELETE FROM OrdersDishes
 WHERE OrderID = 1001;
 
@@ -136,7 +148,8 @@ WHERE
         Name = 'Mini Cheeseburgers'
     OR
         Name = 'Tropical Blue Smoothie';
-    
+
+-- report on the order based on order number    
 SELECT
     c.FirstName AS Name,
     od.OrderID AS OrderNUM,
@@ -145,12 +158,45 @@ SELECT
     SUM(Price) AS Total
 FROM
     OrdersDishes AS od
-JOIN Dishes AS d ON d.DishID = od.DishID
-JOIN Orders AS o ON o.OrderID = od.OrderID
-JOIN Customers AS c ON c.customerID = o.customerID
+    JOIN Dishes AS d ON d.DishID = od.DishID
+    JOIN Orders AS o ON o.OrderID = od.OrderID
+    JOIN Customers AS c ON c.customerID = o.customerID
 WHERE od.OrderID = 1001;
 
+-- solution from the course
+SELECT
+    o.OrderID AS OrderNum,
+    c.LastName AS Name,
+    COUNT(d.DishID) AS Items,
+    SUM(d.Price) AS Total
+FROM 
+    Orders o
+    JOIN OrdersDishes od ON o.OrderID = od.OrderID
+    JOIN Customers c ON o.CustomerID = c.CustomerID
+    JOIN Dishes d ON d.DishID = od.DishID
+WHERE
+    o.OrderID = 1001
+GROUP BY
+    o.OrderID;
 
+
+
+-- report on the order based on order numbers top bills   
+SELECT
+    c.FirstName AS Name,
+    od.OrderID AS OrderNUM,
+    OrderDate AS Date,
+    Count(od.OrderID) AS Items,
+    SUM(Price) AS Total
+FROM
+    OrdersDishes od
+    JOIN Dishes d ON d.DishID = od.DishID
+    JOIN Orders o ON o.OrderID = od.OrderID
+    JOIN Customers c ON c.customerID = o.customerID
+--WHERE od.OrderID = 1001;
+GROUP BY od.OrderID
+Order BY Total DESC
+LIMIT 20;
 
 
 -- get list of the tables in the schema
