@@ -25,6 +25,26 @@ VALUES (
     '2022-09-20 14:00:00'
 );
 
+SELECT * FROM Orders
+ORDER BY OrderID DESC;
+-- orderID 1001
+
+SELECT * FROM OrdersDishes
+ORDER BY OrdersDishesID DESC;
+
+INSERT INTO
+    OrdersDishes (
+        OrderID,
+        DishID
+    )
+VALUES (
+    (
+    
+    ),
+    (
+    
+    )
+);
 
 
 
