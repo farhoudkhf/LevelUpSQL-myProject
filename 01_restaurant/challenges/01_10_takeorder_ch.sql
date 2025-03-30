@@ -30,8 +30,10 @@ ORDER BY OrderID DESC;
 -- orderID 1001
 
 SELECT * FROM OrdersDishes
-ORDER BY OrdersDishesID DESC;
+ORDER BY OrdersDishesID DESC
+LIMIT 10;
 
+-- insert (one row) [ Name = 'House Salad' ] into ordersdishes
 INSERT INTO
     OrdersDishes (
         OrderID,
@@ -39,12 +41,115 @@ INSERT INTO
     )
 VALUES (
     (
-    
+        SELECT 
+            OrderID
+        FROM 
+            Orders
+        WHERE 
+            OrderID = 1001
     ),
     (
-    
+        SELECT 
+            DishID
+        FROM 
+            Dishes
+        WHERE 
+            Name = 'House Salad'
     )
 );
+
+-- insert 3rows into ordersdishes
+INSERT INTO
+    OrdersDishes (
+        OrderID,
+        DishID
+    )
+VALUES 
+        (
+            (
+                SELECT 
+                    OrderID
+                FROM 
+                    Orders
+                WHERE 
+                    OrderID = 1001
+                ),
+                (
+                SELECT 
+                    DishID
+                FROM 
+                    Dishes
+                WHERE 
+                    Name = 'House Salad'
+            )
+        ),
+        (
+            (
+                SELECT 
+                    OrderID
+                FROM 
+                    Orders
+                WHERE 
+                    OrderID = 1001
+            ),
+            (
+                SELECT 
+                    DishID
+                FROM 
+                    Dishes
+                WHERE 
+                    Name = 'Mini Cheeseburgers'
+            )
+        ),
+        (
+            (
+                SELECT 
+                    OrderID
+                FROM 
+                    Orders
+                WHERE 
+                    OrderID = 1001
+            ),
+            (
+                SELECT 
+                    DishID
+                FROM 
+                    Dishes
+                WHERE 
+                    Name = 'Tropical Blue Smoothie'
+            )
+        )
+;
+
+DELETE FROM OrdersDishes
+WHERE OrderID = 1001;
+
+SELECT COUNT(*) FROM OrdersDishes WHERE OrderID = 1001;
+
+SELECT 
+    SUM(Price) AS Total
+FROM
+    Dishes
+WHERE
+        Name = 'House Salad'
+    OR
+        Name = 'Mini Cheeseburgers'
+    OR
+        Name = 'Tropical Blue Smoothie';
+    
+SELECT
+    c.FirstName AS Name,
+    od.OrderID AS OrderNUM,
+    OrderDate AS Date,
+    Count(od.OrderID) AS Items,
+    SUM(Price) AS Total
+FROM
+    OrdersDishes AS od
+JOIN Dishes AS d ON d.DishID = od.DishID
+JOIN Orders AS o ON o.OrderID = od.OrderID
+JOIN Customers AS c ON c.customerID = o.customerID
+WHERE od.OrderID = 1001;
+
 
 
 
@@ -79,4 +184,4 @@ SELECT *
 FROM OrdersDishes
 WHERE OrderID = 1001;
 
-SELECT * FROM Customers;
+SELECT * FROM Dishes;
