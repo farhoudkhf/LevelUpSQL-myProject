@@ -9,7 +9,7 @@ WHERE TYPE = 'table';
 -- get table info
 PRAGMA table_info(_TableName_);
 
--- highest spent
+-- highest spent on a single order
 SELECT 
     c.FirstName || ' ' || c.LastName AS CustomersName,
     od.OrderID,
@@ -25,18 +25,20 @@ GROUP BY
 ORDER BY
     totalSpent DESC;
 
--- highest number of orders by a customer
+-- highest number of orders by a customer (MySolution), when using aggregate, we have to use "HAVING"
 SELECT 
     COUNT(o.CustomerID) AS OrderCount, 
-    c.customerID,
+    -- c.customerID,
     c.FirstName,
     c.LastName,
     c.Email
 FROM 
     Orders o
-    JOIN Customers c ON c.CustomerID = o.CustomerID
-WHERE
-    OrderCount = 15
+JOIN 
+    Customers c ON c.CustomerID = o.CustomerID
 GROUP BY
     o.CustomerID
-LIMIT 6;
+HAVING
+    OrderCount >= 15
+ORDER BY
+    OrderCount DESC;
