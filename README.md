@@ -15,7 +15,7 @@
 <br /> 01/April --- [Chapter2] #3 [completed]
 <br /> 02/April --- [Chapter2] #4 [completed]
 <br /> 03/April --- [Chapter2] #5 [toStart]-[completed]
-<br /> 04/April --- [Chapter2] #6 [toStart]
+<br /> 04/April --- [Chapter2] #6 [toStart]-[Completed]
 <br /> 05/April --- [Chapter2] #7 [toStart]
 <br /> 06/April --- [Chapter2] #8 [toStart]
 <br /> 08/April --- [Course Complete] - [UpLoad]
