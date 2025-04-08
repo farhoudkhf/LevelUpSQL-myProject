@@ -81,3 +81,5 @@ ORDER BY
 
 SELECT * FROM Loans WHERE BookID = 112;
 SELECT * FROM Books WHERE Title ='The War of the Worlds';
+
+-- new change on April 8th on mac
