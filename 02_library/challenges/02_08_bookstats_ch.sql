@@ -13,7 +13,8 @@ WHERE TYPE = 'table';
 -- get table info
 PRAGMA table_info(_TableName_);
 
--- Report 1 - my solution
+-- Report 1 - my solution this shows all the books in the db group by published year 
+-- [wrong - should be distinct on title, there might be more than book with same title and same published year]
 SELECT
     COUNT(b.BookID) AS Qty,
     --b.Title,
@@ -24,9 +25,41 @@ GROUP BY
     b.Published
 ORDER BY
     Qty DESC,
-    b.Title ASC,
-    b.Published DESC
+    b.Published DESC,
+    b.Title ASC 
 ;
+
+SELECT * FROM Books ORDER BY Title;
+
+
+
+SELECT
+    Published,
+    COUNT(DISTINCT(Title)) AS PubCount
+FROM
+    Books
+GROUP BY
+    Published
+ORDER BY
+    PubCount DESC;
+
+SELECT
+    COUNT(DISTINCT(Title)) AS PublishedCount
+FROM
+    Books;
+
+SELECT
+    COUNT(DISTINCT(Title)) pubCount,
+    Published
+FROM
+    Books
+GROUP BY 
+    Published
+ORDER BY
+    pubCount DESC
+    ;
+
+
 
 -- report 2 - my solution 
 SELECT
