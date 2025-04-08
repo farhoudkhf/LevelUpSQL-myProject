@@ -45,7 +45,7 @@ GROUP BY
 ORDER BY
     Title;
 
--- my solution, correct
+-- my solution, correct [Complete]
 SELECT 
     COUNT(b.BookID) AS QTY,
     b.Title
