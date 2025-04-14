@@ -83,3 +83,38 @@ SELECT * FROM Loans WHERE BookID = 112;
 SELECT * FROM Books WHERE Title ='The War of the Worlds';
 
 -- new change on April 8th on mac
+
+-- practice April 14th
+SELECT 
+    Title, Published 
+FROM 
+    Books
+GROUP BY
+    Title
+ORDER BY 
+    Title, Published;
+
+-- number / distinct count of titles 
+SELECT 
+    COUNT(BookID) AS Qty,
+    Title,
+    Published 
+FROM 
+    Books
+GROUP BY
+    Title
+ORDER BY
+    Qty
+;
+
+-- report 1 Show how many titles were published in each year.
+SELECT
+    COUNT(DISTINCt(Title)) QtyPublished,
+    Published
+FROM
+    Books
+GROUP BY
+    Published
+ORDER BY
+    QtyPublished DESC
+;
