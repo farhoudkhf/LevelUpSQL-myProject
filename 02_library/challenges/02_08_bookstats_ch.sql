@@ -119,4 +119,19 @@ ORDER BY
     QtyPublished DESC
 ;
 
--- xoqx push practice!
+-- xoqx push practice! Report 2: Show the five books that have been
+-- checked out the most.
+SELECT
+    COUNT(l.BookID) qtyLoans,
+    b.Title,
+    b.Published
+FROM
+    Loans l 
+    JOIN Books b ON b.BookID = l.BookID
+GROUP BY
+    b.Title
+ORDER BY
+    qtyLoans DESC
+    , b.Title
+;
+
