@@ -123,8 +123,8 @@ ORDER BY
 -- checked out the most.
 SELECT
     COUNT(l.BookID) qtyLoans,
-    b.Title,
-    b.Published
+    b.Title
+   , b.Published
 FROM
     Loans l 
     JOIN Books b ON b.BookID = l.BookID
@@ -132,6 +132,87 @@ GROUP BY
     b.Title
 ORDER BY
     qtyLoans DESC
-    , b.Title
+   , b.Title
+-- LIMIT
+--     5
 ;
 
+-- Report from the course 
+-- Rank the books by how many time they have been checked out
+SELECT 
+    COUNT(l.LoanID) AS LoanCount,
+    RANK() OVER(ORDER BY b.Title ASC) AS BookRank,
+    b.Title 
+FROM 
+    Loans l 
+    JOIN Books b ON b.BookID = l.BookID
+GROUP BY
+    b.Title
+ORDER BY
+    LoanCount DESC,
+    b.Title,
+    b.BookID,
+    l.LoanID
+;
+
+
+-- use of window functions
+-- Report 2 - from new course -  my solution [cant limit to top 10]
+SELECT 
+    COUNT(l.LoanID) AS LoanCount,
+    DENSE_RANK() OVER(ORDER BY COUNT(l.LoanID) DESC) AS BookRank,
+    b.Title 
+FROM 
+    Loans l 
+    JOIN Books b ON b.BookID = l.BookID
+-- WHERE
+--    BookRank <= 10
+GROUP BY
+    b.Title
+ORDER BY
+    LoanCount DESC
+;
+
+-- Report 2 - from new course -  my solution2 [correct]
+SELECT
+    *
+FROM
+    (
+        SELECT 
+            COUNT(l.LoanID) AS LoanCount,
+            DENSE_RANK() OVER(ORDER BY COUNT(l.LoanID) DESC) AS BookRank,
+            b.Title 
+        FROM 
+            Loans l 
+            JOIN Books b ON b.BookID = l.BookID
+        GROUP BY
+            b.Title
+    ) AS rankedbooks
+WHERE
+    BookRank <= 10
+ORDER BY
+    LoanCount DESC
+;
+
+
+
+-- Report 2 - instructor solution
+SELECT *
+FROM 
+    (
+        SELECT
+            COUNT(l.LoanID) AS LoanCount,
+            DENSE_RANK() OVER(ORDER BY COUNT(l.LoanID) DESC) AS BookRank,
+            b.Title 
+        FROM 
+            Loans l 
+            JOIN Books b ON b.BookID = l.BookID
+        GROUP BY
+            b.Title
+    ) RankedBooks
+WHERE
+    BookRank <= 10
+ORDER BY
+    LoanCount DESC,
+    Title
+;
