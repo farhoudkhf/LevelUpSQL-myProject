@@ -95,3 +95,46 @@ SELECT date('now','localtime');
 --     name NOT LIKE 'sqlite_%';
 
 SELECT * FROM emp;
+
+-- Rank practice
+CREATE TABLE rankDemo (Name VARCHAR(10));
+
+INSERT INTO rankDemo (Name)
+VALUES ('A'), ('B'), ('B'), ('C'), ('C'), ('D'), ('E');
+
+SELECT * 
+FROM rankDemo
+; 
+
+SELECT Name,
+RANK () OVER (ORDER BY Name) 
+FROM rankDemo
+; 
+
+SELECT Name,
+DENSE_RANK () OVER (ORDER BY Name) 
+FROM rankDemo
+;
+
+SELECT Name,
+ROW_NUMBER () OVER (ORDER BY Name) 
+FROM rankDemo
+;
+
+-- PARTITION BY
+SELECT Name,
+ROW_NUMBER () OVER (PARTITION BY Name) 
+FROM rankDemo
+;
+
+SELECT Name,
+DENSE_RANK () OVER (ORDER BY Name) 
+FROM rankDemo
+GROUP BY Name
+;
+
+SELECT Name,
+RANK () OVER (ORDER BY Name) 
+FROM rankDemo
+GROUP BY Name
+;
