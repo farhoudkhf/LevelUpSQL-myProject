@@ -18,4 +18,5 @@
 <br /> 04/April --- [Chapter2] #6 [toStart]-[Completed]
 <br /> 05/April --- [Chapter2] #7 [toStart]-[Completed]
 <br /> 06/April --- [Chapter2] #8 [toStart]-[inProgress][pullrequest][xoqx-forked][pushFromTheDesk]
-<br /> 08/April --- [Course Complete] - [UpLoad]
+<br /> 15/April --- [Chapter2] #8 [practice]
+<br /> 16/April --- [Course Complete] - [postponedBy8days][UpLoad]
