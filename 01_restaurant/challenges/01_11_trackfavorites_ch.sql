@@ -90,3 +90,19 @@ GROUP BY
 ORDER BY
     Ferequency DESC
 LIMIT 2;
+
+
+-- myPractice
+SELECT * FROM Customers;
+SELECT * FROM OrdersDishes;
+SELECT * FROM Orders;
+
+SELECT CustomerID, COUNT(*) AS qty
+FROM Orders
+GROUP BY CustomerID
+ORDER BY customerID DESC;
+
+SELECT *
+FROM Customers
+WHERE customerID NOT IN (SELECT CustomerID FROM Orders);
+
