@@ -1,0 +1,20 @@
+SELECT IIF (
+    ((SELECT COUNT(*)
+    FROM Customers 
+    WHERE 
+        FirstName = 'Loretta'
+        AND
+        LastName = 'Hundey'
+    ) = 1)
+    ,
+    (SELECT customerID FROM Customers WHERE customerID = 70)
+    --'exist'
+    ,
+    --'notExisted'
+    INSERT
+
+) 
+ResultCustomerID
+;
+
+SELECT IIF (1>2, 'yes', 'no') result;
