@@ -21,4 +21,5 @@
 <br /> 15/April --- [Chapter2] #8 [practice]
 <br /> 16/April --- [Final Practice on Ranking]
 <br /> 08/May --- [Review Practice on Ch1 and Ch2]
-<br /> 09/May --- [Course Complete] - [Final][UpLoad][courseCompletedUpladed]
+<br /> 08/May --- [Review/Practice Ch2 --> Chall3-Chall08]
+<br /> 10/May --- [Course Complete] - [Final][UpLoad][courseCompletedUpladed]
